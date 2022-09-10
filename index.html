@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Number Guessing</title>
+</head>
+
+<body>
+
+    <div class="bigbox">
+        <div class="top-head">
+            <h2>Number Guessing</h2>
+            <h5>0 to 100</h5>
+        </div>
+        <div class="main-head-1">
+            <h4>push start to make random number</h4>
+            <button id="start">Start</button>
+        </div>
+
+        <div class="main-head-2">
+            <h3>Let's Guessing</h3>
+            <input type="text" id="input" placeholder="Enter Your Number">
+            <button id="test">Test</button>
+        </div>
+
+        <div class="main-head-3">
+            <span>Hints : </span>
+            <h2 id="hint"></h2>
+        </div>
+
+        <div class="last">
+            <h2 id="win"> </h2>
+            <div class="mini-box"></div>
+        </div>
+
+        <button id="reset">Reset</button>
+
+    </div>
+
+
+    <script>
+        let start = document.getElementById('start')
+        let test = document.getElementById('test')
+        let num = parseInt((Math.random())*100)
+        let hint = document.getElementById('hint')
+        let box = document.getElementsByClassName('mini-box')[0]
+        let reset =document.getElementById('reset')
+        let win = document.getElementById('win')
+
+
+
+
+        start.addEventListener('click',function(){
+            
+            alert( 'Hi my freind we choose number for you lets start guessing')
+            
+        })
+
+        test.addEventListener('click',function(){
+            
+            let input = document.getElementById('input').value
+            // console.log('num is :'+num)
+            // console.log('input is :' +input)
+
+            if(input > num){
+                hint.innerHTML='Guess Lower'
+                document.getElementById('input').value = ""
+            }else if(input < num){
+                hint.innerHTML='Guess Higher'
+                document.getElementById('input').value = ""
+
+            }
+            else if(input == num){
+                hint.innerHTML='Correct'
+                box.innerHTML = ''+input+''
+                document.getElementById('input').value = ""
+                win.innerHTML ='You Won'
+
+
+            }
+            
+        })
+
+
+        reset.addEventListener('click',function(){
+            num = ''
+            box.innerHTML = ''
+            hint.innerHTML=''
+            win.innerHTML =''
+            num = parseInt((Math.random())*100)
+            
+        })
+
+
+         
+
+       
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
